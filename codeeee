@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paperboy Arcade</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff9e9;
+  color: #111;
+}
+
+/* TOP NAVIGATION */
+header {
+  background: #073967;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 5%;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 37px;
+  font-weight: 900;
+  color: white;
+  text-shadow: 3px 3px black;
+}
+
+nav {
+  background: #062746;
+  border-radius: 9px;
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  padding: 13px 18px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+nav a:hover,
+nav a.active {
+  background: #f13b43;
+  border-radius: 8px;
+}
+
+/* PAPERBOY BANNER */
+.banner {
+  position: relative;
+  background: #2489b7;
+}
+
+.banner img {
+  width: 100%;
+  display: block;
+}
+
+.click-area {
+  position: absolute;
+  left: 44%;
+  top: 64%;
+  width: 23%;
+  height: 21%;
+}
+
+/* WELCOME SECTION */
+.welcome {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 14px 4%;
+}
+
+.welcome-text {
+  flex: 1.25;
+}
+
+h1 {
+  font-size: 27px;
+  margin: 0 0 10px;
+  border-bottom: 4px solid #f23c4c;
+  padding-bottom: 9px;
+}
+
+.welcome p {
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.newspaper {
+  width: 22%;
+  max-width: 240px;
+}
+
+/* FOUR GAME BUTTONS */
+.shortcuts {
+  background: #07538f;
+  color: white;
+  border-radius: 11px;
+  padding: 13px;
+  flex: 1;
+  min-width: 310px;
+  text-align: center;
+}
+
+.shortcuts h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+
+.shortcut-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.shortcut-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.shortcut-links span {
+  display: block;
+  font-size: 30px;
+  margin-bottom: 4px;
+}
+
+/* MEET OUR TEAM */
+.team {
+  background: #063461;
+  padding: 12px 2.5% 22px;
+}
+
+.team h2 {
+  color: #ff4556;
+  font-size: 25px;
+}
+
+.members {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.member {
+  background: #fff8e7;
+  border: 3px solid #172536;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  gap: 10px;
+  min-height: 155px;
+}
+
+.member img,
+.photo {
+  width: 80px;
+  height: 115px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #ddd9ce;
+  border: 2px solid #222;
+  border-radius: 4px;
+}
+
+.photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.member h3 {
+  font-size: 15px;
+  margin: 0 0 7px;
+}
+
+.member p {
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.member a {
+  background: #f13544;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 7px 12px;
+  font-size: 11px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+/* OTHER SECTIONS */
+.extra {
+  padding: 26px 5%;
+  background: #fff9e9;
+}
+
+.extra h2 {
+  color: #073967;
+}
+
+footer {
+  background: #062746;
+  text-align: center;
+  color: white;
+  padding: 17px;
+  font-size: 12px;
+}
+
+/* MOBILE LAYOUT */
+@media (max-width: 950px) {
+  .welcome {
+    flex-wrap: wrap;
+  }
+
+  .shortcuts {
+    flex-basis: 100%;
+  }
+
+  .members {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 550px) {
+  header {
+    justify-content: center;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  nav a {
+    font-size: 12px;
+    padding: 9px;
+  }
+
+  .welcome {
+    display: block;
+  }
+
+  .newspaper {
+    display: none;
+  }
+
+  .shortcuts {
+    min-width: 0;
+  }
+
+  .members {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP HEADER -->
+<header id="home">
+  <div class="logo">PAPERBOY 📰</div>
+
+  <nav>
+    <a class="active" href="#home">Home</a>
+    <a href="#history">History</a>
+    <a href="#play">How to Play</a>
+    <a href="#facts">Nostalgia/Fun Facts</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- PAPERBOY GAME BANNER -->
+<div class="banner">
+  <img src="banner.jpg" alt="Paperboy Arcade">
+
+  <a class="click-area"
+     href="#play"
+     aria-label="Explore the Game"></a>
+</div>
+
+<!-- WELCOME TO PAPERBOY -->
+<section class="welcome">
+
+  <div class="welcome-text">
+    <h1>WELCOME TO PAPERBOY!</h1>
+
+    <p>
+      Step into the world of Paperboy,
+      the classic arcade game where you
+      deliver newspapers, dodge obstacles,
+      and try to get the highest score.
+      Our website explores the history,
+      gameplay, and nostalgia behind
+      this iconic game.
+    </p>
+  </div>
+
+  <!-- NEWSPAPER PICTURE -->
+  <img class="newspaper"
+       src="newspaper.jpg"
+       alt="Paperboy Newspaper">
+
+  <!-- FOUR GAME LINKS -->
+  <div class="shortcuts">
+    <h2>WHAT YOU'LL FIND</h2>
+
+    <div class="shortcut-links">
+
+      <a href="#history">
+        <span>🎮</span>
+        GAME HISTORY
+      </a>
+
+      <a href="#play">
+        <span>📰</span>
+        HOW TO PLAY
+      </a>
+
+      <a href="#facts">
+        <span>⭐</span>
+        FUN FACTS
+      </a>
+
+      <a href="#contact">
+        <span>📮</span>
+        CONTACT US
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- MEET OUR TEAM -->
+<section class="team" id="team">
+  <h2>MEET OUR TEAM</h2>
+
+  <div class="members">
+
+    <!-- TEAM MEMBER 1 -->
+    <!-- ADD YOUR INFORMATION HERE -->
+    <div class="member">
+      <div class="photo">PHOTO 1</div>
+
+      <div>
+        <h3>YOUR NAME</h3>
+        <p>
+          Write your biography here.
+          Include your major, college,
+          and a little about yourself.
+        </p>
+        <a href="#contact">READ MORE →</a>
+      </div>
+    </div>
+
+    <!-- TEAM MEMBER 2 -->
+    <!-- ADD CLASSMATE 2 HERE -->
+    <div class="member">
+      <div class="photo">PHOTO 2</div>
+
+      <div>
+        <h3>CLASSMATE 2</h3>
+        <p>
+          Write your classmate's
+          biography here.
+        </p>
+        <a href="#contact">READ MORE →</a>
+      </div>
+    </div>
+
+    <!-- TEAM MEMBER 3 -->
+    <!-- ADD CLASSMATE 3 HERE -->
+    <div class="member">
+      <div class="photo">PHOTO 3</div>
+
+      <div>
+        <h3>CLASSMATE 3</h3>
+        <p>
+          Write your classmate's
+          biography here.
+        </p>
+        <a href="#contact">READ MORE →</a>
+      </div>
+    </div>
+
+    <!-- TEAM MEMBER 4 -->
+    <!-- ADD CLASSMATE 4 HERE -->
+    <div class="member">
+      <div class="photo">PHOTO 4</div>
+
+      <div>
+        <h3>CLASSMATE 4</h3>
+        <p>
+          Write your classmate's
+          biography here.
+        </p>
+        <a href="#contact">READ MORE →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HISTORY SECTION -->
+<section class="extra" id="history">
+  <h2>Game History</h2>
+  <p>
+    Paperboy was released by Atari Games
+    in 1985. Players deliver newspapers
+    while riding through a neighborhood.
+  </p>
+</section>
+
+<!-- HOW TO PLAY SECTION -->
+<section class="extra" id="play">
+  <h2>How to Play</h2>
+  <p>
+    Ride your bicycle, deliver newspapers,
+    and avoid obstacles along the way!
+  </p>
+</section>
+
+<!-- FUN FACTS SECTION -->
+<section class="extra" id="facts">
+  <h2>Nostalgia / Fun Facts</h2>
+  <p>
+    Paperboy is remembered for its
+    colorful neighborhood and unique
+    arcade gameplay.
+  </p>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="extra" id="contact">
+  <h2>Contact Us</h2>
+  <p>
+    Welcome to our student Paperboy
+    website project!
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 Paperboy. All rights reserved.
+</footer>
+
+</body>
+</html>
+
